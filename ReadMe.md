@@ -1,4 +1,4 @@
-# RoomVIew Application
+# RoomView Kotlin Application
 
 Here is a short diagram to introduce you to the **Architecture Components**
 
@@ -46,16 +46,35 @@ If you type the annotations yourself (instead of pasting), Android Studio will a
 2. Update your Word class with annotations as shown in this code:
 
 ```kotlin
-@Entity(tableName = "word_table")
+@Entity(tableName = "words_table")
 class Word(@PrimaryKey @ColumnInfo(name = "word") val word: String)
 ```
 
 Let's see what these annotations do:
 
-@Entity(tableName = "word_table") Each @Entity class represents a SQLite table. Annotate your class declaration to indicate that it's an entity. You can specify the name of the table if you want it to be different from the name of the class. This names the table "word_table".
+***@Entity(tableName = "word_table")*** Each @Entity class represents a SQLite table. Annotate your class declaration to indicate that it's an entity. You can specify the name of the table if you want it to be different from the name of the class. This names the table "word_table".
 
-@PrimaryKey Every entity needs a primary key. To keep things simple, each word acts as its own primary key.
+***@PrimaryKey*** Every entity needs a primary key. To keep things simple, each word acts as its own primary key.
 
-@ColumnInfo(name = "word") Specifies the name of the column in the table if you want it to be different from the name of the member variable. This names the column "word".
+***@ColumnInfo(name = "word")*** Specifies the name of the column in the table if you want it to be different from the name of the member variable. This names the column "word".
 
 Every property that's stored in the database needs to have public visibility, which is the Kotlin default.
+
+## 2. Create the DAO
+
+**What is the DAO?**
+In the DAO (data access object), you specify SQL queries and associate them with method calls. The compiler checks the SQL and generates queries from convenience annotations for common queries, such as @Insert. Room uses the DAO to create a clean API for your code.
+
+The DAO must be an interface or abstract class.
+
+By default, all queries must be executed on a separate thread.
+
+Room has Kotlin coroutines support. This allows your queries to be annotated with the suspend modifier and then called from a coroutine or from another suspension function.
+
+## Implement the DAO
+
+Let's write a DAO that provides queries for:
+
+Getting all words ordered alphabetically
+Inserting a word
+Deleting all words
