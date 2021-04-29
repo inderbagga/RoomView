@@ -71,10 +71,9 @@ By default, all queries must be executed on a separate thread.
 
 Room has Kotlin coroutines support. This allows your queries to be annotated with the suspend modifier and then called from a coroutine or from another suspension function.
 
-## Implement the DAO
-
 Let's write a DAO that provides queries for:
 
 Getting all words ordered alphabetically
 Inserting a word
 Deleting all words
+

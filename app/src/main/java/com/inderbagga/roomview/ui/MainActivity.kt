@@ -1,7 +1,8 @@
-package com.inderbagga.roomview
+package com.inderbagga.roomview.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.inderbagga.roomview.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

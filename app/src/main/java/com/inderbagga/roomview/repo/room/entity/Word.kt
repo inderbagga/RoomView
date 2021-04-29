@@ -1,4 +1,4 @@
-package com.inderbagga.roomview.model
+package com.inderbagga.roomview.repo.room.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
